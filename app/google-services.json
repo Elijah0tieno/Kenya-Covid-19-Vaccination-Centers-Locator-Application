@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "11820842448",
+    "project_id": "covaxcentersproject",
+    "storage_bucket": "covaxcentersproject.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:11820842448:android:45d032439ee031bc4b0dd5",
+        "android_client_info": {
+          "package_name": "org.vosystems.covidvaccinationcenterslocator"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "11820842448-ba6a1dg7pc2fj7r8a9q6e68hl7h6jl4k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdmkKqGsgUxQneFmHBgtcJhfvajEi-R8g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "11820842448-ba6a1dg7pc2fj7r8a9q6e68hl7h6jl4k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
