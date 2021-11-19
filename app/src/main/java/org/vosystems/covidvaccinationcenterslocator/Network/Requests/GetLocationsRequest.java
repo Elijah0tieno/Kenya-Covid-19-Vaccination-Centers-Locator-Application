@@ -13,10 +13,15 @@ public class GetLocationsRequest extends ApiRequest {
     public GetLocationsRequest(Context context,String keyword, Response.Listener<JSONArray> listener, Response.ErrorListener errorListener) {
         super(context, getUrl(keyword), Request.Method.GET, listener, errorListener);
 
+                System.out.println(keyword);
+
     }
 
     public static String getUrl(String keyword){
 
-        return Urls.GET_FACILIITES + "?" + keyword;
+        if (keyword == null){
+            return Urls.GET_FACILIITES;
+        }
+        return Urls.GET_FACILIITES + "?keyword=" + keyword;
     }
 }

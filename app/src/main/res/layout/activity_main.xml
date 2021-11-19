@@ -1,18 +1,297 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="true"
+        android:orientation="vertical"
+        tools:context=".MainActivity"
+        >
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="290dp"
+            android:orientation="vertical">
+
+            <ViewFlipper
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/view_flipper">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/sliderthree"
+                        android:adjustViewBounds="true"
+                        android:scaleType="centerCrop"
+                        >
+
+                    </ImageView>
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/slidertwo"
+                        android:adjustViewBounds="true"
+                        android:scaleType="centerCrop">
+
+                    </ImageView>
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/sliderone"
+                        android:adjustViewBounds="true"
+                        android:scaleType="centerCrop">
+
+                    </ImageView>
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/slidefive"
+                        android:adjustViewBounds="true"
+                        android:scaleType="centerCrop">
+
+                    </ImageView>
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/slidesix"
+                        android:adjustViewBounds="true"
+                        android:scaleType="centerCrop">
+
+                    </ImageView>
+                </FrameLayout>
+
+
+
+            </ViewFlipper>
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/TextAppearance.AppCompat.Subhead"
+            android:text="Quick Navigation"
+            android:textColor="#E91E63"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_margin="15dp">
+
+        </TextView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cardCornerRadius="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            app:contentPaddingLeft="12dp"
+            app:contentPaddingRight="12dp"
+            app:contentPaddingTop="8dp"
+            app:contentPaddingBottom="8dp"
+            android:background="@color/colorWhite"
+            android:layout_marginBottom="10dp"
+            >
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:id="@+id/vaccinationCenters"
+                    android:clickable="true">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_baseline_medical_services_24"
+                        android:id="@+id/ic_VaccinationCenters">
+
+                    </ImageView>
+
+                    <TextView
+                        android:id="@+id/txtVaccinationCenters"
+                        style="@style/TextAppearance.AppCompat.Title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginRight="3dp"
+                        android:layout_marginBottom="4dp"
+                        android:layout_toEndOf="@+id/ic_VaccinationCenters"
+                        android:layout_toRightOf="@+id/ic_VaccinationCenters"
+                        android:text="Vaccination Centers"
+                        android:textColor="@color/greyPrimary"
+                        android:textSize="18sp">
+
+                    </TextView>
+
+                </RelativeLayout>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#ddd">
+
+                </View>
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:id="@+id/reminder"
+                    android:clickable="true">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_baseline_alarm_24"
+                        android:id="@+id/ic_Reminder">
+
+                    </ImageView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/greyPrimary"
+                        style="@style/TextAppearance.AppCompat.Title"
+                        android:layout_marginBottom="4dp"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginRight="3dp"
+                        android:textSize="18sp"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/ic_Reminder"
+                        android:layout_toEndOf="@+id/ic_Reminder"
+                        android:id="@+id/txt_Reminder"
+                        android:text="Set Jab Reminder">
+
+                    </TextView>
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#ddd">
+
+                </View>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:id="@+id/profile"
+                    android:clickable="true">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_baseline_person_24"
+                        android:id="@+id/ic_Profile">
+
+                    </ImageView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/greyPrimary"
+                        style="@style/TextAppearance.AppCompat.Title"
+                        android:layout_marginBottom="4dp"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginRight="3dp"
+                        android:textSize="18sp"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/ic_Profile"
+                        android:layout_toEndOf="@+id/ic_Profile"
+                        android:id="@+id/txt_profile"
+                        android:text="My profile">
+
+                    </TextView>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="15dp"
+            android:paddingRight="20dp"
+            android:paddingLeft="20dp"
+            android:text="Sign Out"
+            android:background="#E91E1E"
+            android:textColor="@color/colorWhite"
+            android:textSize="17sp"
+            android:id="@+id/btnSignOut">
+
+        </com.google.android.material.button.MaterialButton>
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

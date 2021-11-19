@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    android:padding="15dp"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".Authentication.SignUp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Fill the fields below to complete registration"
+        android:textColor="@color/greySecondary"
+        style="@style/TextAppearance.AppCompat.Title"
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"
+        android:textSize="18sp">
+
+    </TextView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        android:background="#ddd"
+        android:layout_marginBottom="8dp">
+
+    </View>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Username"
+        android:layout_marginBottom="15dp"
+        android:id="@+id/layout_signUpName"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="12dp"
+            android:drawableStart="@drawable/ic_baseline_person_24"
+            android:inputType="textPersonName"
+            android:id="@+id/signup_name"
+            android:drawableLeft="@drawable/ic_baseline_person_24">
+
+        </com.google.android.material.textfield.TextInputEditText>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Email"
+        android:layout_marginBottom="15dp"
+        android:id="@+id/layout_signInMail"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_baseline_mail_outline_24"
+            android:drawablePadding="12dp"
+            android:inputType="textEmailAddress"
+            android:id="@+id/signup_email"
+            android:drawableLeft="@drawable/ic_baseline_mail_outline_24">
+
+        </com.google.android.material.textfield.TextInputEditText>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:layout_marginBottom="15dp"
+        android:id="@+id/layout_signUpPass"
+        app:passwordToggleEnabled="true"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="12dp"
+            android:drawableStart="@drawable/ic_baseline_lock_24"
+            android:inputType="textPassword"
+            android:id="@+id/signup_password">
+
+        </com.google.android.material.textfield.TextInputEditText>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="18dp"
+        android:textColor="@color/colorWhite"
+        android:backgroundTint="@color/colorTwitter"
+        android:padding="15dp"
+        android:theme="@style/AppTheme.Material"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:text="Sign Up"
+        android:textSize="16sp"
+        android:id="@+id/btnSignUp">
+
+    </com.google.android.material.button.MaterialButton>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Already Signed up?"
+        android:textAlignment="center"
+        android:gravity="center_horizontal"
+        android:paddingTop="10dp"
+        >
+
+    </TextView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sign In"
+        android:textAlignment="center"
+        android:gravity="center_horizontal"
+        android:paddingTop="10dp"
+        android:id="@+id/tvSignIn"
+        android:clickable="true"
+        android:focusable="true"
+        android:textSize="15sp"
+        android:textColor="@color/design_default_color_primary"
+        android:textStyle="bold">
+
+    </TextView>
+
+
+
+
+
+
+</LinearLayout>

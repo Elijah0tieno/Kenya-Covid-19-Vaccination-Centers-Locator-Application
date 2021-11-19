@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="15dp"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
+    tools:context=".Authentication.SignIn">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Email"
+        android:layout_marginBottom="15dp"
+        android:id="@+id/layout_signInMail"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_baseline_mail_outline_24"
+            android:drawablePadding="12dp"
+            android:inputType="textEmailAddress"
+            android:id="@+id/signin_email">
+
+        </com.google.android.material.textfield.TextInputEditText>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:layout_marginBottom="15dp"
+        android:id="@+id/layout_laptopSchool"
+        app:passwordToggleEnabled="true"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_baseline_lock_24"
+            android:drawablePadding="12dp"
+            android:inputType="textPassword"
+            android:id="@+id/signin_password">
+
+        </com.google.android.material.textfield.TextInputEditText>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginTop="10dp"
+        android:text="Forgot Password?"
+        android:clickable="true"
+        android:focusable="true"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:textColor="@color/design_default_color_primary"
+        android:id="@+id/signInForgotPass">
+
+    </TextView>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="18dp"
+        android:textColor="@color/colorWhite"
+        android:backgroundTint="@color/colorBlueLight"
+        android:padding="15dp"
+        android:theme="@style/AppTheme.Material"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:text="Sign In"
+        android:textSize="16sp"
+        android:id="@+id/btnSignIn">
+
+    </com.google.android.material.button.MaterialButton>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Not Registered?"
+        android:textAlignment="center"
+        android:gravity="center_horizontal"
+        android:paddingTop="10dp"
+        >
+
+    </TextView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sign Up"
+        android:textAlignment="center"
+        android:gravity="center_horizontal"
+        android:paddingTop="10dp"
+        android:id="@+id/tvGetStarted"
+        android:clickable="true"
+        android:focusable="true"
+        android:textSize="15sp"
+        android:textColor="@color/design_default_color_primary"
+        android:textStyle="bold">
+
+    </TextView>
+</LinearLayout>
