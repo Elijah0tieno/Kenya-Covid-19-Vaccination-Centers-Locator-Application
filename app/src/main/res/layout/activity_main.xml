@@ -35,6 +35,36 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:src="@drawable/covid1"
+                        android:adjustViewBounds="true"
+                        android:scaleType="centerCrop"
+                        >
+
+                    </ImageView>
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/covid2"
+                        android:adjustViewBounds="true"
+                        android:scaleType="centerCrop"
+                        >
+
+                    </ImageView>
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:src="@drawable/sliderthree"
                         android:adjustViewBounds="true"
                         android:scaleType="centerCrop"
@@ -122,156 +152,165 @@
             app:cardCornerRadius="10dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            app:contentPaddingLeft="12dp"
-            app:contentPaddingRight="12dp"
-            app:contentPaddingTop="8dp"
-            app:contentPaddingBottom="8dp"
             android:background="@color/colorWhite"
             android:layout_marginBottom="10dp"
+            android:layout_marginTop="2dp"
             >
 
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:background="#ddd"
+                >
 
 
-                <RelativeLayout
+                <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingTop="12dp"
-                    android:paddingBottom="12dp"
-                    android:paddingLeft="15dp"
-                    android:paddingRight="15dp"
-                    android:id="@+id/vaccinationCenters"
-                    android:clickable="true">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
+                    android:background="#fff"
+                    android:layout_marginBottom="1dp"
+                    >
+                    <RelativeLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_centerVertical="true"
-                        android:src="@drawable/ic_baseline_medical_services_24"
-                        android:id="@+id/ic_VaccinationCenters">
+                        android:paddingTop="14dp"
+                        android:paddingBottom="14dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:id="@+id/vaccinationCenters"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:background="?android:attr/selectableItemBackground"
+                        >
 
-                    </ImageView>
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/ic_baseline_medical_services_24"
+                            android:id="@+id/ic_VaccinationCenters">
 
-                    <TextView
-                        android:id="@+id/txtVaccinationCenters"
-                        style="@style/TextAppearance.AppCompat.Title"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="3dp"
-                        android:layout_marginRight="3dp"
-                        android:layout_marginBottom="4dp"
-                        android:layout_toEndOf="@+id/ic_VaccinationCenters"
-                        android:layout_toRightOf="@+id/ic_VaccinationCenters"
-                        android:text="Vaccination Centers"
-                        android:textColor="@color/greyPrimary"
-                        android:textSize="18sp">
+                        </ImageView>
 
-                    </TextView>
+                        <TextView
+                            android:id="@+id/txtVaccinationCenters"
+                            style="@style/TextAppearance.AppCompat.Title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="3dp"
+                            android:layout_marginRight="3dp"
+                            android:layout_marginBottom="4dp"
+                            android:layout_toEndOf="@+id/ic_VaccinationCenters"
+                            android:layout_toRightOf="@+id/ic_VaccinationCenters"
+                            android:text="Vaccination Centers"
+                            android:textColor="@color/greyPrimary"
+                            android:textSize="18sp">
 
-                </RelativeLayout>
+                        </TextView>
 
+                    </RelativeLayout>
+                </FrameLayout>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="#ddd">
-
-                </View>
-
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="12dp"
-                    android:paddingBottom="12dp"
-                    android:paddingLeft="15dp"
-                    android:paddingRight="15dp"
-                    android:id="@+id/reminder"
-                    android:clickable="true">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_centerVertical="true"
-                        android:src="@drawable/ic_baseline_alarm_24"
-                        android:id="@+id/ic_Reminder">
-
-                    </ImageView>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/greyPrimary"
-                        style="@style/TextAppearance.AppCompat.Title"
-                        android:layout_marginBottom="4dp"
-                        android:layout_marginLeft="3dp"
-                        android:layout_marginRight="3dp"
-                        android:textSize="18sp"
-                        android:layout_centerVertical="true"
-                        android:layout_toRightOf="@+id/ic_Reminder"
-                        android:layout_toEndOf="@+id/ic_Reminder"
-                        android:id="@+id/txt_Reminder"
-                        android:text="Set Jab Reminder">
-
-                    </TextView>
-
-                </RelativeLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="#ddd">
-
-                </View>
-
-                <RelativeLayout
+                <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingTop="12dp"
-                    android:paddingBottom="12dp"
-                    android:paddingLeft="15dp"
-                    android:paddingRight="15dp"
-                    android:id="@+id/profile"
-                    android:clickable="true">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
+                    android:background="#fff"
+                    android:layout_marginBottom="1dp"
+                    >
+                    <RelativeLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_centerVertical="true"
-                        android:src="@drawable/ic_baseline_person_24"
-                        android:id="@+id/ic_Profile">
+                        android:paddingTop="14dp"
+                        android:paddingBottom="14dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:id="@+id/reminder"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:background="?android:attr/selectableItemBackground">
 
-                    </ImageView>
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/ic_baseline_alarm_24"
+                            android:id="@+id/ic_Reminder">
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                        </ImageView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/greyPrimary"
+                            style="@style/TextAppearance.AppCompat.Title"
+                            android:layout_marginBottom="4dp"
+                            android:layout_marginLeft="3dp"
+                            android:layout_marginRight="3dp"
+                            android:textSize="18sp"
+                            android:layout_centerVertical="true"
+                            android:layout_toRightOf="@+id/ic_Reminder"
+                            android:layout_toEndOf="@+id/ic_Reminder"
+                            android:id="@+id/txt_Reminder"
+                            android:text="Set Jab Reminder">
+
+                        </TextView>
+
+                    </RelativeLayout>
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#fff">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/greyPrimary"
-                        style="@style/TextAppearance.AppCompat.Title"
-                        android:layout_marginBottom="4dp"
-                        android:layout_marginLeft="3dp"
-                        android:layout_marginRight="3dp"
-                        android:textSize="18sp"
-                        android:layout_centerVertical="true"
-                        android:layout_toRightOf="@+id/ic_Profile"
-                        android:layout_toEndOf="@+id/ic_Profile"
-                        android:id="@+id/txt_profile"
-                        android:text="My profile">
+                        android:paddingTop="14dp"
+                        android:paddingBottom="14dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:id="@+id/profile"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:background="?android:attr/selectableItemBackground">
 
-                    </TextView>
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/ic_baseline_person_24"
+                            android:id="@+id/ic_Profile">
 
-                </RelativeLayout>
+                        </ImageView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/greyPrimary"
+                            style="@style/TextAppearance.AppCompat.Title"
+                            android:layout_marginBottom="4dp"
+                            android:layout_marginLeft="3dp"
+                            android:layout_marginRight="3dp"
+                            android:textSize="18sp"
+                            android:layout_centerVertical="true"
+                            android:layout_toRightOf="@+id/ic_Profile"
+                            android:layout_toEndOf="@+id/ic_Profile"
+                            android:id="@+id/txt_profile"
+                            android:text="My profile">
+
+                        </TextView>
+
+                    </RelativeLayout>
+                </FrameLayout>
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -282,10 +321,12 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_margin="15dp"
+            android:paddingTop="14dp"
+            android:paddingBottom="14dp"
             android:paddingRight="20dp"
             android:paddingLeft="20dp"
             android:text="Sign Out"
-            android:background="#E91E1E"
+            app:backgroundTint="#DF0952"
             android:textColor="@color/colorWhite"
             android:textSize="17sp"
             android:id="@+id/btnSignOut">

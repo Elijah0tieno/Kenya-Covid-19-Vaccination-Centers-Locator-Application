@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="8dp"
+    app:cardPreventCornerOverlap="true"
+    android:layout_marginBottom="5dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginTop="5dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:id="@+id/view_wrap"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="?android:attr/selectableItemBackground"
+        >
+
+        <FrameLayout
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:id="@+id/icon"
+            android:layout_marginRight="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_centerVertical="true"
+            >
+            <ImageView
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_baseline_local_hospital_24"
+                android:id="@+id/icon_img"
+                />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/icon"
+            android:layout_toEndOf="@+id/icon"
+            android:layout_toLeftOf="@+id/ptrIcon"
+            android:layout_toStartOf="@+id/ptrIcon"
+            android:layout_marginRight="6dp"
+            android:layout_marginEnd="6dp"
+            android:orientation="vertical"
+            android:layout_centerVertical="true"
+            >
+
+            <TextView
+                style="@style/TextAppearance.AppCompat.Subhead"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="Moderna Second Jab Due"
+                android:textSize="18sp"
+                android:id="@+id/name"
+                />
+
+            <TextView
+                style="@style/TextAppearance.AppCompat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="23:20 HRS"
+                android:textSize="15sp"
+                android:id="@+id/info"
+                />
+
+
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                >
+
+                <TableRow
+                    android:weightSum="1">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        >
+                        <ImageView
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:src="@drawable/ic_baseline_timer_24"
+                            android:id="@+id/time_added_icon"
+                            android:layout_marginRight="4dp"
+                            android:layout_marginEnd="4dp"
+                            android:layout_centerVertical="true"
+                            app:tint="@color/textBodyMuted" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            style="@style/TextAppearance.AppCompat"
+                            android:text="Jan 13, 2020"
+                            android:id="@+id/date"
+                            android:textColor="@color/colorGrey"
+                            android:layout_toRightOf="@+id/time_added_icon"
+                            android:layout_toEndOf="@+id/time_added_icon"
+                            android:textSize="13sp"
+                            />
+                    </RelativeLayout>
+                </TableRow>
+
+            </TableLayout>
+
+
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:id="@+id/ptrIcon"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_baseline_chevron_right_24"
+            app:tint="@color/textMuted" />
+
+    </RelativeLayout>
+
+</com.google.android.material.card.MaterialCardView>

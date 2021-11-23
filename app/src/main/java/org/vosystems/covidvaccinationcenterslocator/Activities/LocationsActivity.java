@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -19,6 +20,7 @@ import androidx.fragment.app.FragmentActivity;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -31,6 +33,7 @@ import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -54,7 +57,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class LocationsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
+public class LocationsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener, LocationListener {
     private String keyword = null;
     private ArrayList<Marker> markers;
     private GoogleMap mMap;
@@ -72,6 +75,11 @@ public class LocationsActivity extends FragmentActivity implements OnMapReadyCal
     private LatLng currentLocation;
     private ProgressDialog progressDialog;
 
+    private Polyline routePolyline = null;
+    private LatLng lastPositionClicked = null;
+    private Marker currentLocationMarker = null;
+    private Circle currentLocationCircle = null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,7 +91,6 @@ public class LocationsActivity extends FragmentActivity implements OnMapReadyCal
         markers = new ArrayList<>();
 
         searchView = findViewById(R.id.searchView);
-
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -159,24 +166,8 @@ public class LocationsActivity extends FragmentActivity implements OnMapReadyCal
                     longitude = lon;
 
                     currentLocation = new LatLng(latitude,longitude);
-                    mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)).position(currentLocation).title("My Current Location"));
-                    mMap.moveCamera(CameraUpdateFactory.newLatLng(currentLocation));
 
-                    CameraPosition cameraPosition = new CameraPosition.Builder()
-                            .target(currentLocation)      // Sets the center of the map to location user
-                            .zoom(10)                   // Sets the zoom
-                            .bearing(90)                // Sets the orientation of the camera to east
-                            .tilt(40)                   // Sets the tilt of the camera to 30 degrees
-                            .build();                   // Creates a CameraPosition from the builder
-                    mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
-
-                    cirle = mMap.addCircle(new CircleOptions()
-                    .center(currentLocation).radius(10000)
-                            .strokeWidth(1)
-                            .strokeColor(Color.BLUE)
-                            .fillColor(Color.argb(50,40,60,250))
-                            .clickable(true)
-                    );
+                    showCurrentUserPosition();
 
                 }else {
                     Toast.makeText(LocationsActivity.this, "Null", Toast.LENGTH_SHORT).show();
@@ -209,9 +200,18 @@ public class LocationsActivity extends FragmentActivity implements OnMapReadyCal
 
         mMap.setOnMarkerClickListener(this);
 
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                double lat = currentLocation.latitude;
+                double lng = currentLocation.longitude;
 
-
-
+//                loc.setLatitude(lat);
+//                loc.setLongitude(lng);
+//
+//                onLocationChanged(new Location());
+            }
+        }, 2000);
         // Add a marker in Sydney and move the camera
 //        LatLng sydney = new LatLng(-34, 151);
 //        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
@@ -248,39 +248,91 @@ public class LocationsActivity extends FragmentActivity implements OnMapReadyCal
             }
         }));
 
-
     }
 
     private void mapFacility(Facility facility) {
-
         LatLng location = new LatLng(facility.latitudes, facility.longitudes);
         MarkerOptions marker = new MarkerOptions().position(location).title(facility.name);
 
         markers.add(mMap.addMarker(marker));
-
-//        System.out.println(facility.name + " " + facility.latitudes + " " + facility.longitudes);
-
-
-
     }
-
 
     @Override
     public boolean onMarkerClick(@NonNull Marker marker) {
+        // Update last position clicked
+        lastPositionClicked = marker.getPosition();
+
+        // draw route to clicked marker from current location
         getRoute(marker);
         return false;
-
     }
 
     public void getRoute(Marker marker){
 //        Toast.makeText(this, marker.getPosition().latitude + "", Toast.LENGTH_SHORT).show();
-        drawPolylines(currentLocation);
+        drawPolylines(marker.getPosition(), true);
     }
 
-    private void drawPolylines(LatLng dest) {
-        progressDialog.setMessage("Please Wait, Polyline between two locations is building.");
-        progressDialog.setCancelable(true);
-        progressDialog.show();
+    // Will be called when the user's location changes
+    private void updateGPS(Location newLocation){
+        Toast.makeText(LocationsActivity.this, "Location changed", Toast.LENGTH_SHORT).show();
+
+        // Update current location to the new location
+        currentLocation = new LatLng(newLocation.getLatitude(), newLocation.getLongitude());
+
+        // Update current location marker
+        showCurrentUserPosition();
+
+        // Update route
+        if(lastPositionClicked != null){
+            drawPolylines(lastPositionClicked, false);
+        }
+    }
+
+    private void showCurrentUserPosition(){
+        // Remove existing current location circle and marker
+        if(currentLocationCircle != null){
+            currentLocationCircle.remove();
+        }
+
+        if(currentLocationMarker != null){
+            currentLocationMarker.remove();
+        }
+
+        // New marker
+        currentLocationMarker = mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)).position(currentLocation).title("Your Location"));
+
+        // point camera to new marker
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(currentLocation));
+
+        CameraPosition cameraPosition = new CameraPosition.Builder()
+                .target(currentLocation)      // Sets the center of the map to location user
+                .zoom(10)                   // Sets the zoom
+                .tilt(40)                   // Sets the tilt of the camera to 30 degrees
+                .build();                   // Creates a CameraPosition from the builder
+
+        mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+
+        // New circle
+        currentLocationCircle = mMap.addCircle(new CircleOptions()
+                .center(currentLocation).radius(10000)
+                .strokeWidth(0)
+                .strokeColor(Color.BLUE)
+                .fillColor(Color.argb(50,40,60,250))
+                .clickable(true)
+        );
+
+    }
+
+    private void drawPolylines(LatLng dest, boolean showProgress) {
+        if(dest.equals(currentLocation)){
+            return;
+        }
+
+        if(showProgress) {
+            progressDialog.setMessage("Please Wait, Polyline between two locations is building.");
+            progressDialog.setCancelable(true);
+            progressDialog.show();
+        }
 
         // Checks, whether start and end locations are captured
         // Getting URL to the Google Directions API
@@ -289,6 +341,11 @@ public class LocationsActivity extends FragmentActivity implements OnMapReadyCal
         DownloadTask downloadTask = new DownloadTask();
         // Start downloading json data from Google Directions API
         downloadTask.execute(url);
+    }
+
+    @Override
+    public void onLocationChanged(Location location) {
+        updateGPS(location);
     }
 
     private class DownloadTask extends AsyncTask<String, Void, String> {
@@ -311,10 +368,7 @@ public class LocationsActivity extends FragmentActivity implements OnMapReadyCal
             super.onPostExecute(result);
 
             ParserTask parserTask = new ParserTask();
-
-
             parserTask.execute(result);
-
         }
     }
 
@@ -346,15 +400,19 @@ public class LocationsActivity extends FragmentActivity implements OnMapReadyCal
         protected void onPostExecute(List<List<HashMap<String, String>>> result) {
             progressDialog.dismiss();
             Log.d("result", result.toString());
-            ArrayList points = null;
+
+            if(routePolyline != null){
+                // Remove the last polyline
+                routePolyline.remove();
+            }
 
             for (int i = 0; i < result.size(); i++) {
                 PolylineOptions lineOptions = new PolylineOptions();
-                points = new ArrayList();
-
+                lineOptions.width(20);
+                lineOptions.color(Color.parseColor("#85007bff"));
+                lineOptions.geodesic(true);
 
                 List<HashMap<String, String>> path = result.get(i);
-
 
                 for (int j = 0; j < path.size(); j++) {
                     HashMap<String, String> point = path.get(j);
@@ -363,18 +421,21 @@ public class LocationsActivity extends FragmentActivity implements OnMapReadyCal
                     double lng = Double.parseDouble(point.get("lng"));
                     LatLng position = new LatLng(lat, lng);
 
-                    points.add(position);
-
-                    System.out.print("Latitude: "+ lat);
+                    lineOptions.add(position);
                 }
 
-                lineOptions.addAll(points);
-                lineOptions.width(12);
-                lineOptions.color(Color.RED);
-                lineOptions.geodesic(true);
-// Drawing polyline in the Google Map for the i-th route
-                mMap.addPolyline(lineOptions);
+                // Drawing polyline in the Google Map for the i-th route
+                // Assign the generated polyline to route polyline
+                routePolyline = mMap.addPolyline(lineOptions);
 
+                // Increase zoom after drawing route
+                CameraPosition cameraPosition = new CameraPosition.Builder()
+                        .target(currentLocation)      // Sets the center of the map to location user
+                        .zoom(13)                   // Sets the zoom
+                        .tilt(40)                   // Sets the tilt of the camera to 30 degrees
+                        .build();
+                // Creates a CameraPosition from the builder
+                mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
             }
 
 
@@ -402,8 +463,6 @@ public class LocationsActivity extends FragmentActivity implements OnMapReadyCal
 
         // Building the url to the web service
         String url = "https://maps.googleapis.com/maps/api/directions/" + output + "?" + parameters;
-
-
 
         return url;
     }

@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">CovidVaccinationCentersLocator</string>
+    <string name="app_name">Get Vaccinated</string>
     <string name="title_activity_locations">LocationsActivity</string>
 </resources>
