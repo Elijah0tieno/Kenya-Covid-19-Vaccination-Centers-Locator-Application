@@ -61,7 +61,7 @@
                 android:maxLines="1"
                 android:text="Moderna Second Jab Due"
                 android:textSize="18sp"
-                android:id="@+id/name"
+                android:id="@+id/reminderTitle"
                 />
 
             <TextView
@@ -70,7 +70,7 @@
                 android:layout_height="wrap_content"
                 android:text="23:20 HRS"
                 android:textSize="15sp"
-                android:id="@+id/info"
+                android:id="@+id/reminderTime"
                 />
 
 
@@ -104,7 +104,7 @@
                             android:layout_centerVertical="true"
                             style="@style/TextAppearance.AppCompat"
                             android:text="Jan 13, 2020"
-                            android:id="@+id/date"
+                            android:id="@+id/reminderDate"
                             android:textColor="@color/colorGrey"
                             android:layout_toRightOf="@+id/time_added_icon"
                             android:layout_toEndOf="@+id/time_added_icon"
