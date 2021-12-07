@@ -34,7 +34,7 @@
                 android:layout_width="45dp"
                 android:layout_height="45dp"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_baseline_local_hospital_24"
+                android:src="@drawable/ic_baseline_coronavirus_24"
                 android:id="@+id/icon_img"
                 />
         </FrameLayout>

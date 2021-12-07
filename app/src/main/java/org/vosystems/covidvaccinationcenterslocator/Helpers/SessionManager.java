@@ -19,6 +19,8 @@ public class SessionManager {
     private ProgressDialog dialog;
     private SharedPreferences preferences;
 
+
+
     public SessionManager(Context context) {
         this.context = context;
         this.auth = FirebaseAuth.getInstance();
@@ -58,7 +60,6 @@ public class SessionManager {
         Map<String, String> user = new HashMap<>();
         user.put("username", preferences.getString("username",""));
         user.put("email", preferences.getString("email",""));
-
         return user;
     }
 

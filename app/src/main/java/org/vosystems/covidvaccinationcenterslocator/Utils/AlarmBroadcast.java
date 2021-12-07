@@ -13,6 +13,7 @@ import android.widget.RemoteViews;
 
 import androidx.core.app.NotificationCompat;
 
+import org.vosystems.covidvaccinationcenterslocator.Activities.NotificationsMessage;
 import org.vosystems.covidvaccinationcenterslocator.R;
 
 public class AlarmBroadcast extends BroadcastReceiver {
@@ -20,11 +21,10 @@ public class AlarmBroadcast extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         Bundle bundle = intent.getExtras();
         String text = bundle.getString("Vaccine Reminder");
-        String date = bundle.getString("date") + " " +
-                bundle.getString("time");
+        String date = bundle.getString("date") + " " + bundle.getString("time");
 
         //Click on notification
-        Intent intent1 = new Intent(context, NotificationMessage.class);
+        Intent intent1 = new Intent(context, NotificationsMessage.class);
         intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent1.putExtra("message", text);
 
@@ -61,5 +61,6 @@ public class AlarmBroadcast extends BroadcastReceiver {
         }
         Notification notification = builder.build();
         notificationManager.notify(1, notification);
+
     }
 }

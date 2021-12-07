@@ -99,6 +99,16 @@ public class AddReminderActivity extends AppCompatActivity {
         TimePickerDialog timePickerDialog = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker timePicker, int i, int i1) {
+                Calendar currentTime = Calendar.getInstance();
+                if (i < currentTime.get(Calendar.HOUR)){
+                    Toast.makeText(AddReminderActivity.this, "Time cannot be in the past", Toast.LENGTH_SHORT).show();
+                    return;
+                }else if (i == currentTime.get(Calendar.HOUR)){
+                    if (i1 < currentTime.get(Calendar.MINUTE)){
+                        Toast.makeText(AddReminderActivity.this, "Time cannot be in the past", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                }
                 //temporary variable to store the alarm time
                 notifyTime = i + ":" + i1;
                 //set the button text as selected time
@@ -113,14 +123,30 @@ public class AddReminderActivity extends AppCompatActivity {
         Calendar calendar = Calendar.getInstance();
         int year = calendar.get(Calendar.YEAR);
         int month = calendar.get(Calendar.MONTH);
-        int day = calendar.get(Calendar.YEAR);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
         DatePickerDialog datePickerDialog = new DatePickerDialog(this,
                 new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
-                        btnDate.setText(day + "-" + (month + 1) + "-" + year);
+
+                        Calendar currentDate = Calendar.getInstance();
+                        if (year < currentDate.get(Calendar.YEAR)) {
+                            //TODO Snackbar
+                            Toast.makeText(AddReminderActivity.this, "Date cannot be in the past", Toast.LENGTH_SHORT).show();
+                            return;
+                        }else if (year == currentDate.get(Calendar.YEAR)){
+                            if (month < currentDate.get(Calendar.MONTH)){
+                                Toast.makeText(AddReminderActivity.this, "Date cannot be in the past", Toast.LENGTH_SHORT).show();
+                                return;
+                            }else if (dayOfMonth < currentDate.get(Calendar.DAY_OF_MONTH)){
+                                Toast.makeText(AddReminderActivity.this, "Date cannot be in the past", Toast.LENGTH_SHORT).show();
+                                return;
+                            }
+                        }
+                            btnDate.setText(dayOfMonth + "-" + (month + 1) + "-" + year);
+
                     }
-                }, year, month, day);
+                },year, month, day);
         datePickerDialog.show();
     }
 
@@ -143,7 +169,7 @@ public class AddReminderActivity extends AppCompatActivity {
         }else if (hour == 12){
             time = "12" + ":" + formattedMinute + " PM";
         }else {
-            int temp = hour -12;
+            int temp = hour - 12;
             time = temp + ":" + formattedMinute + " PM";
         }
         return time;
@@ -166,12 +192,12 @@ public class AddReminderActivity extends AppCompatActivity {
             Date date1 = formatter.parse(dateandtime);
             alarmManager.set(AlarmManager.RTC_WAKEUP, date1.getTime(),
                     pendingIntent);
-            Toast.makeText(AddReminderActivity.this, "Alarm", Toast.LENGTH_SHORT).show();
+            Toast.makeText(AddReminderActivity.this, "Reminder set", Toast.LENGTH_SHORT).show();
         }catch (ParseException e){
             e.printStackTrace();
         }
         //called once setting alarm is complete
-        Intent intentBack = new Intent(AddReminderActivity.this, Reminders.class);
+        Intent intentBack = new Intent(AddReminderActivity.this, ReminderActivity.class);
         intentBack.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         //proceed to reminders activity
         startActivity(intentBack);

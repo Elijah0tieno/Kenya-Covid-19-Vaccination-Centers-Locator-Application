@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +18,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.UserProfileChangeRequest;
@@ -48,6 +50,12 @@ public class SignUp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
+        FirebaseApp.initializeApp(SignUp.this);
+        initApp();
+
+
+    }
+    public void initApp(){
         preferences = getSharedPreferences("auth", MODE_PRIVATE);
 
         auth = FirebaseAuth.getInstance();
@@ -59,7 +67,6 @@ public class SignUp extends AppCompatActivity {
 
         progressDialog = new ProgressDialog(SignUp.this);
         alert = new AlertDialog.Builder(SignUp.this);
-
     }
 
     private void initViews(){
@@ -96,6 +103,7 @@ public class SignUp extends AppCompatActivity {
                             if (task.isSuccessful()){
                                 progressDialog.setMessage("Wrapping up...");
                                 user.setUid(task.getResult().getUser().getUid());
+                                System.out.println("User id: "+ user.getUid());
 
                                 db.collection("users").document(user.getUid()).set(user, SetOptions.merge()).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
@@ -124,6 +132,7 @@ public class SignUp extends AppCompatActivity {
                                             });
                                         }else {
                                             showAlert("Failed","An error occurred during the process. Try again after a moment");
+                                            Toast.makeText(SignUp.this, " "+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                         }
                                     }
                                 });

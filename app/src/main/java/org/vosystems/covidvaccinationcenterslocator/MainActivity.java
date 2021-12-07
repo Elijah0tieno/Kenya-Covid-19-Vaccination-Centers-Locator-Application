@@ -1,6 +1,7 @@
 package org.vosystems.covidvaccinationcenterslocator;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
@@ -11,35 +12,46 @@ import android.widget.ViewFlipper;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.button.MaterialButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
+import org.vosystems.covidvaccinationcenterslocator.Activities.AddReminderActivity;
 import org.vosystems.covidvaccinationcenterslocator.Activities.LocationsActivity;
-import org.vosystems.covidvaccinationcenterslocator.Activities.ProfileActivity;
 import org.vosystems.covidvaccinationcenterslocator.Activities.ReminderActivity;
+import org.vosystems.covidvaccinationcenterslocator.Authentication.SignIn;
+import org.vosystems.covidvaccinationcenterslocator.Helpers.SessionManager;
 
 public class MainActivity extends AppCompatActivity {
-    RelativeLayout vaxcenters, reminders, profile;
+    RelativeLayout vaxcenters, addReminder, viewReminders;
     ViewFlipper viewFlipper;
     MaterialButton btnSignOut;
+
+    private SharedPreferences preferences;
+    SessionManager sessionManager;
+    FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+//        FirebaseApp.initializeApp(MainActivity.this);
+
+        sessionManager = new SessionManager(this);
+        user = sessionManager.getCurrentUser();
+        preferences = getSharedPreferences("auth",MODE_PRIVATE);
+
         initViews();
         initFlipper();
         initListeners();
-
     }
 
     public void initViews(){
         vaxcenters = findViewById(R.id.vaccinationCenters);
-        reminders = findViewById(R.id.reminder);
-        profile = findViewById(R.id.profile);
-
+        addReminder = findViewById(R.id.reminder);
+        viewReminders = findViewById(R.id.view_reminders);
         btnSignOut = findViewById(R.id.btnSignOut);
         viewFlipper = findViewById(R.id.view_flipper);
-
     }
 
     public void initFlipper(){
@@ -59,18 +71,33 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        reminders.setOnClickListener(new View.OnClickListener() {
+        addReminder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, AddReminderActivity.class));
+            }
+        });
+
+        viewReminders.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, ReminderActivity.class));
             }
         });
-
-        profile.setOnClickListener(new View.OnClickListener() {
+        btnSignOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, ProfileActivity.class));
+                signOut();
             }
         });
+    }
+
+    public void signOut(){
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.clear();
+        editor.apply();
+        FirebaseAuth.getInstance().signOut();
+        finish();
+        startActivity(new Intent(MainActivity.this, SignIn.class));
     }
 }

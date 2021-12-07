@@ -37,6 +37,8 @@ android {
 }
 
 dependencies {
+    implementation platform('com.google.firebase:firebase-bom:27.0.0')
+    implementation 'com.google.firebase:firebase-core:9.6.1'
     implementation "androidx.recyclerview:recyclerview:1.2.1"
     implementation 'com.google.firebase:firebase-firestore'
     implementation 'com.google.firebase:firebase-auth'
@@ -62,3 +64,4 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 }
+apply plugin: 'com.google.gms.google-services'

@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="#fff">
 
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -276,36 +277,36 @@
                         android:paddingBottom="14dp"
                         android:paddingLeft="15dp"
                         android:paddingRight="15dp"
-                        android:id="@+id/profile"
+                        android:id="@+id/view_reminders"
                         android:clickable="true"
                         android:focusable="true"
                         android:background="?android:attr/selectableItemBackground">
 
                         <ImageView
+                            android:id="@+id/ic_Reminders"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
                             android:layout_marginEnd="10dp"
                             android:layout_marginRight="10dp"
-                            android:layout_centerVertical="true"
-                            android:src="@drawable/ic_baseline_person_24"
-                            android:id="@+id/ic_Profile">
+                            android:src="@drawable/ic_baseline_event_note_24">
 
                         </ImageView>
 
                         <TextView
+                            android:id="@+id/txt_profile"
+                            style="@style/TextAppearance.AppCompat.Title"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/greyPrimary"
-                            style="@style/TextAppearance.AppCompat.Title"
-                            android:layout_marginBottom="4dp"
+                            android:layout_centerVertical="true"
                             android:layout_marginLeft="3dp"
                             android:layout_marginRight="3dp"
-                            android:textSize="18sp"
-                            android:layout_centerVertical="true"
-                            android:layout_toRightOf="@+id/ic_Profile"
-                            android:layout_toEndOf="@+id/ic_Profile"
-                            android:id="@+id/txt_profile"
-                            android:text="My profile">
+                            android:layout_marginBottom="4dp"
+                            android:layout_toEndOf="@+id/ic_Reminders"
+                            android:layout_toRightOf="@+id/ic_Reminders"
+                            android:text="Vaccine reminders"
+                            android:textColor="@color/greyPrimary"
+                            android:textSize="18sp">
 
                         </TextView>
 

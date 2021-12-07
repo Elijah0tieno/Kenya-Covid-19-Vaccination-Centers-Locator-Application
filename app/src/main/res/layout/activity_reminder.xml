@@ -15,6 +15,7 @@
     </androidx.recyclerview.widget.RecyclerView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnAddReminder"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_alignParentEnd="true"
@@ -22,7 +23,7 @@
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="50dp"
         android:src="@drawable/ic_baseline_add_24"
-        android:id="@+id/btnAddReminder">
+        app:backgroundTint="@color/colorRed">
 
     </com.google.android.material.floatingactionbutton.FloatingActionButton>
 

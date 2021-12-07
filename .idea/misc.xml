@@ -6,13 +6,17 @@
         <entry key="..\:/Users/dell/Documents/CovidVaccinationCentersLocator/app/src/main/res/drawable-v24/edit_background.xml" value="0.1" />
         <entry key="..\:/Users/dell/Documents/CovidVaccinationCentersLocator/app/src/main/res/drawable-v24/ic_baseline_lock_24.xml" value="0.10925925925925926" />
         <entry key="..\:/Users/dell/Documents/CovidVaccinationCentersLocator/app/src/main/res/drawable-v24/ic_baseline_mail_outline_24.xml" value="0.10925925925925926" />
+        <entry key="..\:/Users/dell/Documents/CovidVaccinationCentersLocator/app/src/main/res/drawable/ic_baseline_event_note_24.xml" value="0.22291666666666668" />
         <entry key="..\:/Users/dell/Documents/CovidVaccinationCentersLocator/app/src/main/res/layout/activity_locations.xml" value="0.1" />
         <entry key="..\:/Users/dell/Documents/CovidVaccinationCentersLocator/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Users/dell/Documents/CovidVaccinationCentersLocator/app/src/main/res/layout/activity_notifications_message.xml" value="0.20677083333333332" />
         <entry key="..\:/Users/dell/Documents/CovidVaccinationCentersLocator/app/src/main/res/layout/activity_reminder.xml" value="0.20677083333333332" />
         <entry key="..\:/Users/dell/Documents/CovidVaccinationCentersLocator/app/src/main/res/layout/activity_reminder_list.xml" value="0.33" />
+        <entry key="..\:/Users/dell/Documents/CovidVaccinationCentersLocator/app/src/main/res/layout/activity_reminders.xml" value="0.20677083333333332" />
         <entry key="..\:/Users/dell/Documents/CovidVaccinationCentersLocator/app/src/main/res/layout/activity_sign_in.xml" value="0.25" />
         <entry key="..\:/Users/dell/Documents/CovidVaccinationCentersLocator/app/src/main/res/layout/activity_sign_up.xml" value="0.25" />
         <entry key="..\:/Users/dell/Documents/CovidVaccinationCentersLocator/app/src/main/res/layout/dialog_data_entry.xml" value="0.1897644927536232" />
+        <entry key="..\:/Users/dell/Documents/CovidVaccinationCentersLocator/app/src/main/res/layout/notification_layout.xml" value="0.33" />
         <entry key="..\:/Users/dell/Documents/CovidVaccinationCentersLocator/app/src/main/res/layout/reminder_file.xml" value="0.25" />
       </map>
     </option>

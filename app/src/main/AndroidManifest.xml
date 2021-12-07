@@ -12,6 +12,9 @@
         android:theme="@style/Theme.CovidVaccinationCentersLocator"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
+
+        <receiver android:name=".Utils.AlarmBroadcast" />
+
         <activity
             android:name=".Activities.NotificationsMessage"
             android:exported="false" />
@@ -67,5 +70,6 @@
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
 
 </manifest>

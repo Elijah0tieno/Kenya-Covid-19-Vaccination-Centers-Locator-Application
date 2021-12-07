@@ -329,7 +329,7 @@ public class LocationsActivity extends FragmentActivity implements OnMapReadyCal
         }
 
         if(showProgress) {
-            progressDialog.setMessage("Please Wait, Polyline between two locations is building.");
+            progressDialog.setMessage("Finding best route, please wait...");
             progressDialog.setCancelable(true);
             progressDialog.show();
         }

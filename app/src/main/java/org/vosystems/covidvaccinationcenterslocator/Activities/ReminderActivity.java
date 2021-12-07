@@ -45,7 +45,7 @@ public class ReminderActivity extends AppCompatActivity {
         btnCreateReminder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ReminderActivity.this, Reminders.class);
+                Intent intent = new Intent(ReminderActivity.this, AddReminderActivity.class);
                 startActivity(intent);
             }
         });
